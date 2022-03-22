@@ -1,6 +1,24 @@
 <template>
     <div>
         <SinglePostComponent></SinglePostComponent>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Job</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for="(person, index) in persons">
+                <th scope="row">{{index}}</th>
+                <td>{{ person.name }}</td>
+                <td>{{ person.age }}</td>
+                <td>{{ person.job }}</td>
+            </tr>
+        </tbody>
+        </table>
     </div>
 </template>
 
@@ -11,25 +29,27 @@ export default {
 
     data(){
         return {
-            
+            persons: null
         }
     },
 
-    mounted(){
-        this.getPosts()
+    mounted() {
+        this.getPersons()
     },
 
     methods:{
-        getPosts(){
-            axios.get('/posts')
-            .then(function(data){
-                console.log(data.data);
+        getPersons(){
+            axios.get('/persons')
+            .then( res => {  
+                this.persons = res.data    
             })
-        },
-    },
+            .catch( error => {
 
-    computed: {
-         
+            })
+            .finally({
+                
+            })
+        }
     },
 
     components:{
