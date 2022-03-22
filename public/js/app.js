@@ -5375,60 +5375,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "PostComponent",
   data: function data() {
-    return {
-      persons: [{
-        name: 'Вася',
-        age: 20,
-        job: 'coach'
-      }, {
-        name: 'Елена',
-        age: 17,
-        job: 'rest'
-      }, {
-        name: 'Петр',
-        age: 34,
-        job: 'seller'
-      }, {
-        name: 'Ксюша',
-        age: 25,
-        job: 'traveller'
-      }, {
-        name: 'Олья',
-        age: 21,
-        job: 'Teacher'
-      }]
-    };
+    return {};
   },
-  methods: {},
-  computed: {
-    personsAgeMoreTwenty: function personsAgeMoreTwenty() {
-      return this.persons.filter(function (person) {
-        return person.age > 20;
+  mounted: function mounted() {
+    this.getPosts();
+  },
+  methods: {
+    getPosts: function getPosts() {
+      axios.get('/posts').then(function (data) {
+        console.log(data.data);
       });
     }
   },
+  computed: {},
   components: {
     SinglePostComponent: _SinglePostComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   }
@@ -28127,56 +28090,9 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("SinglePostComponent"),
-      _vm._v(" "),
-      _c("table", { staticClass: "table" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.personsAgeMoreTwenty, function (person, index) {
-            return person.age > 20
-              ? _c("tr", [
-                  _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(index)),
-                  ]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(person.name))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(person.age))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(person.job))]),
-                ])
-              : _vm._e()
-          }),
-          0
-        ),
-      ]),
-    ],
-    1
-  )
+  return _c("div", [_c("SinglePostComponent")], 1)
 }
-var staticRenderFns = [
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Name")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Age")]),
-        _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Job")]),
-      ]),
-    ])
-  },
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
