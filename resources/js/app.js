@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import ExampleComponent from "./components/ExampleComponent";
-
+import PostComponent from "./components/PostComponent"
 require('./bootstrap');
 
 const app = new Vue({
@@ -8,6 +7,6 @@ const app = new Vue({
     components: {
         //ExampleComponent: ExampleComponent
         //"SomeSelection": ExampleComponent
-        ExampleComponent,
+        PostComponent,
     }
 })
