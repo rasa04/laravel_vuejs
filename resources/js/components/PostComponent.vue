@@ -1,7 +1,8 @@
 <template>
     <div>
-        <SinglePostComponent></SinglePostComponent>
-        <table class="table">
+        <CreateComponent></CreateComponent>
+        <IndexComponent ref="index"></IndexComponent>
+     <!--    <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
@@ -18,12 +19,13 @@
                 <td>{{ person.job }}</td>
             </tr>
         </tbody>
-        </table>
+        </table> -->
     </div>
 </template>
 
 <script>
-import SinglePostComponent from "./SinglePostComponent";
+import CreateComponent from "./CreateComponent";
+import IndexComponent from "./IndexComponent";
 export default {
     name: "PostComponent",
 
@@ -34,26 +36,18 @@ export default {
     },
 
     mounted() {
-        this.getPersons()
+        console.log(this.$refs.index.indexLog());
     },
 
     methods:{
-        getPersons(){
-            axios.get('/persons')
-            .then( res => {  
-                this.persons = res.data    
-            })
-            .catch( error => {
-
-            })
-            .finally({
-                
-            })
+        parentLog() {
+            console.log('this is parent component');
         }
     },
 
     components:{
-        SinglePostComponent
+        CreateComponent,
+        IndexComponent
     }
 }
 </script>
