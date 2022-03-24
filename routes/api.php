@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['prefix' => '/people', 'namespace' => 'App\Http\Controllers\Person'], function(){
     Route::post('/', 'StoreController');
     Route::get('/', 'IndexController');
+    Route::get('/{person}', 'ShowController');
     Route::patch('/{person}', 'UpdateController');
     Route::delete('/{person}', 'DeleteController');
 });
